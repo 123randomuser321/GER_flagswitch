@@ -1,0 +1,152 @@
+﻿### The events for 'German Flagswitch'
+### By MEEEB
+### v1
+
+### Create a namespace for this
+
+add_namespace = gerflag
+
+### done
+
+### As of now only for fascism aka Uncle A
+### Will probably get more complicated since you can freely puppet everything in vanilla
+
+
+### Start of the event for the civil flag
+
+country_event = {
+	id = gerflag.1
+	immediate = {log = "[GetDateText]: [Root.GetName]: event gerflag.1"}
+	title = gerflag.1.t
+	desc = gerflag.1.d
+
+	trigger = {
+	tag = GER
+	has_country_flag = GER_war_flag # War flag must be set --> doesn't trigger at game-start
+	NOT = {
+	has_war = yes # looks wonky but works
+	}
+	}
+
+	mean_time_to_happen = {
+	days = 10
+	}
+
+	option = {
+	name = gerflag.1.a
+	clr_country_flag = GER_war_flag
+	set_country_flag = GER_civil_flag
+	set_cosmetic_tag = GER_at_peace
+	}
+}
+
+### End of the event for the civil flag
+
+
+### Start of the event for the war flag (1935-1938)
+
+country_event = {
+	id = gerflag.2
+	immediate = {log = "[GetDateText]: [Root.GetName]: event gerflag.2"}
+	title = gerflag.2.t
+	desc = gerflag.2.d
+
+	trigger = {
+	tag = GER
+	date < 1938.01.01
+	#has_country_flag = GER_civil_flag # Commented out so we don't need a third event
+	NOT = {
+	has_country_flag = GER_war_flag
+	}
+	has_war = yes
+	}
+
+	mean_time_to_happen = {
+	days = 10
+	}
+
+	option = {
+	name = gerflag.2.a
+	clr_country_flag = GER_civil_flag # dirty but works
+	set_country_flag = GER_war_flag
+	set_cosmetic_tag = GER_at_war1 
+	}
+}
+
+### End of the event for the war flag (1935-1938)
+
+### Start of the event for the war flag (1938-1945, but you might last longer)
+
+country_event = {
+	id = gerflag.3
+	immediate = {log = "[GetDateText]: [RootGetName]: event gerflag.3"}
+	title = gerflag.3.t
+	desc = gerflag.3.d
+
+	trigger = {
+	tag = GER
+	date > 1938.01.01
+	#has_country_flag = GER_civil_flag # Will keep this for reasons
+	NOT = {
+	has_country_flag = GER_war_flag
+	}
+	has_war = yes
+	}
+
+	mean_time_to_happen = {
+	days = 10
+	}
+
+	option = {
+	name = gerflag.3.a
+	clr_country_flag = GER_civil_flag # still dirty
+	set_country_flag = GER_war_flag
+	set_cosmetic_tag = GER_at_war2
+	}
+}
+
+### End of the event for the war flag (1938-1945)
+
+### Start of the event for the war flag switch (players like war)
+
+country_event = {
+	id = gerflag.4
+	immediate = {log = "[GetDateText]: [RootGetName]: event gerflag.4"}
+	title = gerflag.4.t
+	desc = gerflag.4.d
+
+	trigger = {
+	tag = GER
+	date > 1938.01.01
+	has_country_flag = GER_war_flag
+	has_war = yes
+	NOT = {
+	has_country_flag = GER_war_flag_switch
+	}
+	}
+
+	mean_time_to_happen = {
+	days = 10
+	}
+
+	option = {
+	name = gerflag.4.a
+	set_country_flag = GER_war_flag_switch
+	set_cosmetic_tag = GER_at_war2
+	}
+
+	option = {
+	name = gerflag.4.b
+	set_country_flag = GER_war_flag_switch
+	}
+}
+
+### End of the event for the war flag switch
+
+### Todo:
+### Rework loc
+### Block these events for Dems, Commies, and Neutrals (maybe)
+### Großdeutsches Reich, probably
+### Make the flag changes (war-peace, peace-war) optional
+### Tooltips
+### Give the communists a choice? The had quite a lot of flags (historical GDR)

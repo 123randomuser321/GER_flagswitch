@@ -1,0 +1,63 @@
+If this is all one line, blame Windows.
+### Notes for 'German Flagswitch'
+### by MEEEB
+### v1
+
+Hello reader!
+
+This document contains sources, general notes and other related things.
+
+
+Sources:
+
+Peacetime Third Reich flag: https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Flag_of_Germany_%281935%E2%80%931945%29.svg/1000px-Flag_of_Germany_%281935%E2%80%931945%29.svg.png
+Wartime flag (1935-1938): https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/War_Ensign_of_Germany_%281935-1938%29.svg/1000px-War_Ensign_of_Germany_%281935-1938%29.svg.png
+Wartime flag (1938-1945): https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/War_ensign_of_Germany_%281938%E2%80%931945%29.svg/1000px-War_ensign_of_Germany_%281938%E2%80%931945%29.svg.png
+
+
+General notes:
+
+This mod does several things:
+
+1. It overwrites the vanilla censored German flag with the uncensored flag.
+2. It creates three cosmetic tags, one for each flag.
+3. It uses three events to change between the flags, depending on your diplomatic status.
+4. It uses a fourth event to give you the ability to switch the War flag mid-war.
+
+
+Files overwritten:
+
+/gfx/flags/GER_fascism.tga
+/gfx/flags/medium/GER_fascism.tga
+/gfx/flags/small/GER_fascism.tga
+
+
+Files added:
+
+/events/GER_flagswitch.txt
+/gfx/flags/GER_at_peace_fascism.tga
+/gfx/flags/medium/GER_at_peace_fascism.tga
+/gfx/flags/small/GER_at_peace_fascism.tga
+/gfx/flags/GER_at_war1_fascism.tga
+/gfx/flags/medium/GER_at_war1_fascism.tga
+/gfx/flags/small/GER_at_war1_fascism.tga
+/gfx/flags/GER_at_war2_fascism.tga
+/gfx/flags/medium/GER_at_war2_fascism.tga
+/gfx/flags/small/GER_at_war2_fascism.tga
+/localisation/GER_flagswitch_l_english.yml
+/logo.png
+/notes_by_MEEEB.txt (this file)
+
+
+Dev notes:
+
+This was sadly not a simple measure of copy and paste, though it should work.
+
+__Theoretically__ this should also work with everything that doesn't specifically modify the added files.
+Which means: It's compatible with 'Beautiful States'.
+
+Bear in mind:
+Vanilla ideologies are volatile, so this mod might, at least lore-wise, break.
+
+
+ - MEEEB
