@@ -1,6 +1,10 @@
 ﻿### loc for 'German Flagswitch'
 ### by MEEEB
-### v1
+### v1 rev1
+### Added loc for gerflag.5
+### Formatting issues
+
+
 l_english:
 
 ### loc for the Civil flag
@@ -26,4 +30,10 @@ gerflag.4.t:0 "A new war flag?"
 gerflag.4.d:0 "Our flag designers came forth with a new flag design for our war flag and are pressing to adapt said design. There is just one problem - We are already at war."
 gerflag.4.a:0 "A small, but necessary change."
 gerflag.4.b:0 "They could've picked a better time for this!"
+### end
+
+### loc for the double-event blocker
+gerflag.5.t:0 "A new war flag?"
+gerflag.5.d:0 "Our flag designers came forth with a new flag design for our war flag and are pressing to adapt said design."
+gerflag.5.a:0 "It's beautiful!"
 ### end

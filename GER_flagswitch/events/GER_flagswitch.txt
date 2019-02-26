@@ -1,6 +1,8 @@
 ﻿### The events for 'German Flagswitch'
 ### By MEEEB
-### v1
+### v1 rev1
+### simplified gerflag.4 by adding the flag to gerflag.3
+### added gerflag.5
 
 ### Create a namespace for this
 
@@ -85,7 +87,7 @@ country_event = {
 
 	trigger = {
 	tag = GER
-	date > 1938.01.01
+	date > 1937.12.31
 	#has_country_flag = GER_civil_flag # Will keep this for reasons
 	NOT = {
 	has_country_flag = GER_war_flag
@@ -101,6 +103,7 @@ country_event = {
 	name = gerflag.3.a
 	clr_country_flag = GER_civil_flag # still dirty
 	set_country_flag = GER_war_flag
+	set_country_flag = GER_war_flag_switch_no
 	set_cosmetic_tag = GER_at_war2
 	}
 }
@@ -115,14 +118,16 @@ country_event = {
 	title = gerflag.4.t
 	desc = gerflag.4.d
 
+	fire_only_once = yes
+
 	trigger = {
 	tag = GER
-	date > 1938.01.01
+	date > 1937.12.31
 	has_country_flag = GER_war_flag
-	has_war = yes
 	NOT = {
-	has_country_flag = GER_war_flag_switch
+	has_country_flag = GER_war_flag_switch_no
 	}
+	has_war = yes
 	}
 
 	mean_time_to_happen = {
@@ -131,17 +136,46 @@ country_event = {
 
 	option = {
 	name = gerflag.4.a
-	set_country_flag = GER_war_flag_switch
 	set_cosmetic_tag = GER_at_war2
 	}
 
 	option = {
 	name = gerflag.4.b
-	set_country_flag = GER_war_flag_switch
 	}
 }
 
 ### End of the event for the war flag switch
+
+### Start of the event to prevent gerflag.3 and .4 occuring simultaneously
+
+country_event = {
+	id = gerflag.5
+	immediate = {log = "[GetDateText]: [RootGetName]: event gerflag.5"}
+	title = gerflag.5.t
+	desc = gerflag.5.d
+
+	fire_only_once = yes
+
+	trigger = {
+	tag = GER
+	date > 1937.12.31
+	NOT = {
+	has_country_flag = GER_war_flag
+	has_war = yes
+	}
+	}
+
+	mean_time_to_happen = {
+	days = 10
+	}
+
+	option = {
+	name = gerflag.5.a
+	set_country_flag = GER_war_flag_switch_no
+	}
+}
+
+### End of the prevention
 
 ### Todo:
 ### Rework loc
