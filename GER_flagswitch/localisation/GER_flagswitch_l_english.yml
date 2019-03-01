@@ -1,8 +1,7 @@
 ﻿### loc for 'German Flagswitch'
 ### by MEEEB
-### v1 rev1
-### Added loc for gerflag.5
-### Formatting issues
+### v2
+### Added loc for gerflag.6
 
 
 l_english:
@@ -36,4 +35,10 @@ gerflag.4.b:0 "They could've picked a better time for this!"
 gerflag.5.t:0 "A new war flag?"
 gerflag.5.d:0 "Our flag designers came forth with a new flag design for our war flag and are pressing to adapt said design."
 gerflag.5.a:0 "It's beautiful!"
+### end
+
+### loc for Willy's war
+gerflag.6.t:0 "The Empire at war!"
+gerflag.6.d:0 "We are at war! May the world shudder, and shatter under our might!"
+gerflag.6.a:0 "We are ready. Let's see if our enemies are!"
 ### end

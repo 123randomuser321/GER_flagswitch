@@ -1,8 +1,8 @@
 ﻿### The events for 'German Flagswitch'
 ### By MEEEB
-### v1 rev1
-### simplified gerflag.4 by adding the flag to gerflag.3
-### added gerflag.5
+### v2
+### restricted gerflag.2-5 to a fascist govt
+### Added gerflag.6 for Imperial Germany
 
 ### Create a namespace for this
 
@@ -10,7 +10,7 @@ add_namespace = gerflag
 
 ### done
 
-### As of now only for fascism aka Uncle A
+### Uncle A and Kaiser Willy are supported
 ### Will probably get more complicated since you can freely puppet everything in vanilla
 
 
@@ -55,6 +55,7 @@ country_event = {
 
 	trigger = {
 	tag = GER
+	has_government = fascism
 	date < 1938.01.01
 	#has_country_flag = GER_civil_flag # Commented out so we don't need a third event
 	NOT = {
@@ -87,6 +88,7 @@ country_event = {
 
 	trigger = {
 	tag = GER
+	has_government = fascism
 	date > 1937.12.31
 	#has_country_flag = GER_civil_flag # Will keep this for reasons
 	NOT = {
@@ -122,6 +124,7 @@ country_event = {
 
 	trigger = {
 	tag = GER
+	has_government = fascism
 	date > 1937.12.31
 	has_country_flag = GER_war_flag
 	NOT = {
@@ -158,6 +161,7 @@ country_event = {
 
 	trigger = {
 	tag = GER
+	has_government = fascism
 	date > 1937.12.31
 	NOT = {
 	has_country_flag = GER_war_flag
@@ -177,9 +181,41 @@ country_event = {
 
 ### End of the prevention
 
+### War flag for Mr. Hat, Willy and Willy Jr.
+
+country_event = {
+	id = gerflag.6
+	immediate = {log = "[GetDateText]: [RootGetName]: event gerflag.6"}
+	title = gerflag.6.t
+	desc = gerflag.6.d
+
+	trigger = {
+	tag = GER
+	has_government = neutrality # For August or Willy
+	NOT = {
+	has_country_flag = GER_war_flag
+	}
+	has_war = yes
+	}
+
+	mean_time_to_happen = {
+	days = 10
+	}
+
+	option = {
+	name = gerflag.6.a
+	clr_country_flag = GER_civil_flag # still works
+	set_country_flag = GER_war_flag
+	set_cosmetic_tag = GER_at_war1
+	}
+}
+
+### End of Willy's War flag
+
 ### Todo:
 ### Rework loc
-### Block these events for Dems, Commies, and Neutrals (maybe)
+### Block these events for Dems, Commies (maybe)
+### Give the fascist rebels (Oppose Hitler) the ability to use this
 ### Großdeutsches Reich, probably
 ### Make the flag changes (war-peace, peace-war) optional
 ### Tooltips
