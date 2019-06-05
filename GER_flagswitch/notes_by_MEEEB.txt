@@ -1,7 +1,9 @@
 If this is all one line, blame Windows.
 ### Notes for 'German Flagswitch'
 ### by MEEEB
-### v2
+### v3
+### a lot of rework happened
+
 
 Hello reader!
 
@@ -22,7 +24,7 @@ General notes:
 This mod does several things:
 
 1. It decensores(?) the fascist civil flag.
-2. It adds cosmetic tags for the civil and war flags of Germany (as of now Uncle A and Kaiser Willy).
+2. It adds cosmetic tags for the war flags of Germany (as of now Uncle A and Kaiser Willy).
 3. It uses two events to switch the fascist war flag at the appopriate date.
 4. It uses several events to switch your flag, depending on your diplomatic status (war or peace).
 
@@ -43,12 +45,6 @@ Files overwritten:
 Files added:
 
 /events/GER_flagswitch.txt
-/gfx/flags/GER_at_peace_fascism.tga
-/gfx/flags/medium/GER_at_peace_fascism.tga
-/gfx/flags/small/GER_at_peace_fascism.tga
-/fgx/flags/GER_at_peace_neutrality.tga
-/fgx/flags/medium/GER_at_peace_neutrality.tga
-/fgx/flags/small/GER_at_peace_neutrality.tga
 /gfx/flags/GER_at_war1_fascism.tga
 /gfx/flags/medium/GER_at_war1_fascism.tga
 /gfx/flags/small/GER_at_war1_fascism.tga
@@ -67,11 +63,12 @@ Dev notes:
 
 This was sadly not a simple measure of copy and paste, though it should work.
 
-__Theoretically__ this should also work with everything that doesn't specifically modify the added files.
-Which means: It's compatible with 'Beautiful States'.
+This doesn't touch any files relevant to the game, so it's universally compatible
+Which means: It's compatible with i.e. 'Beautiful States'.
 
 Bear in mind:
 Vanilla ideologies are volatile, so this mod might, at least lore-wise, break.
+Also, check your cosmetics.
 
 
  - MEEEB

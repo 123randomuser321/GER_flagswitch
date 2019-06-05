@@ -1,15 +1,20 @@
 ﻿### The events for 'German Flagswitch'
 ### By MEEEB
-### v2 rev2
-### Modified all events to use 'hidden_effect'
-### Made the war-->peace and peace-->war changes optional
-### Tooltips have been implemented
+### v3
+### killed all log instances, as I more or less copied them from KR's event structure and this mod isn't big enough to warrant such things
+### removed _at_peace, because I am a brainlet and didn't realize you can invoke actual tags as cosmetic tags
+### no more mean_time_to_happen
+### a bit of cleanup
+### immediate scope is now used for the _country_flag commands
+### added a third country_flag to fix illogical events
+
 
 ### Create a namespace for this
 
 add_namespace = gerflag
 
 ### done
+
 
 ### Uncle A and Kaiser Willy are supported
 ### Will probably get more complicated since you can freely puppet everything in vanilla
@@ -19,7 +24,6 @@ add_namespace = gerflag
 
 country_event = {
 	id = gerflag.1
-	immediate = {log = "[GetDateText]: [Root.GetName]: event gerflag.1"}
 	title = gerflag.1.t
 	desc = gerflag.1.d
 
@@ -31,26 +35,22 @@ country_event = {
 	}
 	}
 
-	mean_time_to_happen = {
-	days = 10
+	immediate = {
+	clr_country_flag = GER_war_flag
+	clr_country_flag = GER_war_flag_occured # dirty
+	set_country_flag = GER_civil_flag
 	}
 
 	option = {
 	name = gerflag.1.a
 	hidden_effect = {
-	clr_country_flag = GER_war_flag
-	set_country_flag = GER_civil_flag
-	set_cosmetic_tag = GER_at_peace
+	set_cosmetic_tag = GER
 	}
 	custom_effect_tooltip = gerflag.1.ta
 	}
 
 	option = {
 	name = gerflag.1.b
-	hidden_effect = {
-	clr_country_flag = GER_war_flag
-	set_country_flag = GER_civil_flag
-	}
 	custom_effect_tooltip = gerflag.1.tb
 	}
 }
@@ -62,7 +62,6 @@ country_event = {
 
 country_event = {
 	id = gerflag.2
-	immediate = {log = "[GetDateText]: [Root.GetName]: event gerflag.2"}
 	title = gerflag.2.t
 	desc = gerflag.2.d
 
@@ -70,22 +69,21 @@ country_event = {
 	tag = GER
 	has_government = fascism
 	date < 1938.01.01
-	#has_country_flag = GER_civil_flag # Commented out so we don't need a third event
 	NOT = {
-	has_country_flag = GER_war_flag
+	has_country_flag = GER_war_flag_occured
 	}
 	has_war = yes
 	}
 
-	mean_time_to_happen = {
-	days = 10
+	immediate = {
+	clr_country_flag = GER_civil_flag # dirty
+	set_country_flag = GER_war_flag_occured
 	}
 
 	option = {
 	name = gerflag.2.a
 	hidden_effect = {
-	clr_country_flag = GER_civil_flag # dirty but works
-	set_country_flag = GER_war_flag
+	set_country_flag = GER_war_flag # so only this option will yield the peacetime switch later
 	set_cosmetic_tag = GER_at_war1 
 	}
 	custom_effect_tooltip = gerflag.2.ta
@@ -93,10 +91,6 @@ country_event = {
 
 	option = {
 	name = gerflag.2.b
-	hidden_effect = {
-	clr_country_flag = GER_civil_flag
-	set_country_flag = GER_war_flag
-	}
 	custom_effect_tooltip = gerflag.2.tb
 	}
 }
@@ -107,7 +101,6 @@ country_event = {
 
 country_event = {
 	id = gerflag.3
-	immediate = {log = "[GetDateText]: [RootGetName]: event gerflag.3"}
 	title = gerflag.3.t
 	desc = gerflag.3.d
 
@@ -115,23 +108,25 @@ country_event = {
 	tag = GER
 	has_government = fascism
 	date > 1937.12.31
-	#has_country_flag = GER_civil_flag # Will keep this for reasons
 	NOT = {
-	has_country_flag = GER_war_flag
+	has_country_flag = GER_war_flag_occured
 	}
 	has_war = yes
 	}
 
-	mean_time_to_happen = {
-	days = 10
+	immediate = {
+	clr_country_flag = GER_civil_flag # dirty
+	set_country_flag = GER_war_flag_occured
+	if = {
+	limit = { NOT = { has_country_flag = GER_war_flag_switch_no } }
+	set_country_flag = GER_war_flag_switch_no # makes it less dirty
+	}
 	}
 
 	option = {
 	name = gerflag.3.a
 	hidden_effect = {
-	clr_country_flag = GER_civil_flag # still dirty
-	set_country_flag = GER_war_flag
-	set_country_flag = GER_war_flag_switch_no
+	set_country_flag = GER_war_flag # see .2
 	set_cosmetic_tag = GER_at_war2
 	}
 	custom_effect_tooltip = gerflag.3.ta
@@ -139,11 +134,6 @@ country_event = {
 
 	option = {
 	name = gerflag.3.b
-	hidden_effect = {
-	clr_country_flag = GER_civil_flag
-	set_country_flag = GER_war_flag
-	set_country_flag = GER_war_flag_switch_no
-	}
 	custom_effect_tooltip = gerflag.3.tb
 	}
 }
@@ -154,7 +144,6 @@ country_event = {
 
 country_event = {
 	id = gerflag.4
-	immediate = {log = "[GetDateText]: [RootGetName]: event gerflag.4"}
 	title = gerflag.4.t
 	desc = gerflag.4.d
 
@@ -169,10 +158,6 @@ country_event = {
 	has_country_flag = GER_war_flag_switch_no
 	}
 	has_war = yes
-	}
-
-	mean_time_to_happen = {
-	days = 10
 	}
 
 	option = {
@@ -195,7 +180,6 @@ country_event = {
 
 country_event = {
 	id = gerflag.5
-	immediate = {log = "[GetDateText]: [RootGetName]: event gerflag.5"}
 	title = gerflag.5.t
 	desc = gerflag.5.d
 
@@ -211,15 +195,12 @@ country_event = {
 	}
 	}
 
-	mean_time_to_happen = {
-	days = 10
+	immediate = {
+	set_country_flag = GER_war_flag_switch_no
 	}
 
 	option = {
 	name = gerflag.5.a
-	hidden_effect = {
-	set_country_flag = GER_war_flag_switch_no
-	}
 	custom_effect_tooltip = gerflag.5.ta
 	}
 }
@@ -230,7 +211,6 @@ country_event = {
 
 country_event = {
 	id = gerflag.6
-	immediate = {log = "[GetDateText]: [RootGetName]: event gerflag.6"}
 	title = gerflag.6.t
 	desc = gerflag.6.d
 
@@ -238,20 +218,20 @@ country_event = {
 	tag = GER
 	has_government = neutrality # For August or Willy
 	NOT = {
-	has_country_flag = GER_war_flag
+	has_country_flag = GER_war_flag_occured
 	}
 	has_war = yes
 	}
 
-	mean_time_to_happen = {
-	days = 10
+	immediate = {
+	clr_country_flag = GER_civil_flag # dirty
+	set_country_flag = GER_war_flag_occured
 	}
 
 	option = {
 	name = gerflag.6.a
 	hidden_effect = {
-	clr_country_flag = GER_civil_flag # still works
-	set_country_flag = GER_war_flag
+	set_country_flag = GER_war_flag_occured # see .2
 	set_cosmetic_tag = GER_at_war1
 	}
 	custom_effect_tooltip = gerflag.6.ta
@@ -259,19 +239,16 @@ country_event = {
 
 	option = {
 	name = gerflag.6.b
-	hidden_effect = {
-	clr_country_flag = GER_civil_flag
-	set_country_flag = GER_war_flag
-	}
 	custom_effect_tooltip = gerflag.6.tb
 	}
 }
 
 ### End of Willy's War flag
 
+
+
 ### Todo:
 ### Rework loc
-### Block these events for Dems, Commies (maybe)
 ### Give the fascist rebels (Oppose Hitler) the ability to use this
-### Großdeutsches Reich, probably
-### Give the communists a choice? The had quite a lot of flags (historical GDR)
+### Give the communists a choice? The had quite a lot of flags (historical GDR) ### not feasible, vanilla has no real Commie path
+### decision to 'rectify' not hoisting a flag
