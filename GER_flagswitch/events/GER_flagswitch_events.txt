@@ -1,0 +1,276 @@
+﻿### The events for 'German Flagswitch'
+### By MEEEB
+### v3 (third take)
+### typo
+### renamed this file
+
+
+### Create a namespace for this
+
+add_namespace = gerflag
+
+### done
+
+
+### Uncle A and Kaiser Willy are supported
+### Will probably get more complicated since you can freely puppet everything in vanilla
+
+
+### Start of the event for the civil flag
+
+country_event = {
+	id = gerflag.1
+	title = gerflag.1.t
+	desc = gerflag.1.d
+
+	trigger = {
+	tag = GER
+	has_country_flag = GER_war_flag # War flag must be set --> doesn't trigger at game-start
+	NOT = {
+	has_war = yes # looks wonky but works
+	}
+	}
+
+	immediate = {
+	clr_country_flag = GER_war_flag
+	clr_country_flag = GER_war_flag_occured # dirty
+	set_country_flag = GER_civil_flag
+	}
+
+	mean_time_to_happen = {
+	days = 0 # let's try this
+	}
+
+	option = {
+	name = gerflag.1.a
+	hidden_effect = {
+	set_cosmetic_tag = GER
+	}
+	custom_effect_tooltip = gerflag.1.ta
+	}
+
+	option = {
+	name = gerflag.1.b
+	custom_effect_tooltip = gerflag.1.tb
+	}
+}
+
+### End of the event for the civil flag
+
+
+### Start of the event for the war flag (1935-1938), also general war flag for others
+
+country_event = {
+	id = gerflag.2
+	title = gerflag.2.t
+	desc = gerflag.2.d
+
+	trigger = {
+	tag = GER
+	OR = {
+	AND = {
+	has_government = fascism # Uncle A
+	date < 1938.01.01
+	}
+	has_government = neutrality # Willy
+	}
+	NOT = {
+	has_country_flag = GER_war_flag_occured
+	}
+	has_war = yes
+	}
+
+	immediate = {
+	clr_country_flag = GER_civil_flag # dirty
+	set_country_flag = GER_war_flag_occured
+	}
+
+	mean_time_to_happen = {
+	days = 0 # let's try this
+	}
+
+	option = {
+	name = gerflag.2.a
+	hidden_effect = {
+	set_country_flag = GER_war_flag # so only this option will yield the peacetime switch later
+	set_cosmetic_tag = GER_at_war1 
+	}
+	if = {
+	limit = { has_government = fascism } # Uncle A loc
+	custom_effect_tooltip = gerflag.2.ta
+	}
+	if = {
+	limit = { has_government = neutrality } # Willy
+	custom_effect_tooltip = gerflag.2.tb
+	}
+	}
+
+	option = {
+	name = gerflag.2.b
+	custom_effect_tooltip = gerflag.2.tc
+	}
+}
+
+### End of the event for the war flag (1935-1938)
+
+### Start of the event for the war flag (1938-1945, but you might last longer)
+
+country_event = {
+	id = gerflag.3
+	title = gerflag.3.t
+	desc = gerflag.3.d
+
+	trigger = {
+	tag = GER
+	has_government = fascism
+	date > 1937.12.31
+	NOT = {
+	has_country_flag = GER_war_flag_occured
+	}
+	has_war = yes
+	}
+
+	immediate = {
+	clr_country_flag = GER_civil_flag # dirty
+	set_country_flag = GER_war_flag_occured
+	if = {
+	limit = { NOT = { has_country_flag = GER_war_flag_switch_no } }
+	set_country_flag = GER_war_flag_switch_no # makes it less dirty
+	}
+	}
+
+	mean_time_to_happen = {
+	days = 0 # let's try this
+	}
+
+	option = {
+	name = gerflag.3.a
+	hidden_effect = {
+	set_country_flag = GER_war_flag # see .2
+	set_cosmetic_tag = GER_at_war2
+	}
+	custom_effect_tooltip = gerflag.3.ta
+	}
+
+	option = {
+	name = gerflag.3.b
+	custom_effect_tooltip = gerflag.3.tb
+	}
+}
+
+### End of the event for the war flag (1938-1945)
+
+### Start of the event for the war flag switch (players like war)
+
+country_event = {
+	id = gerflag.4
+	title = gerflag.4.t
+	desc = gerflag.4.d
+
+	fire_only_once = yes
+
+	trigger = {
+	tag = GER
+	has_government = fascism
+	date > 1937.12.31
+	has_country_flag = GER_war_flag
+	NOT = {
+	has_country_flag = GER_war_flag_switch_no
+	}
+	has_war = yes
+	}
+
+	mean_time_to_happen = {
+	days = 0 # let's try this
+	}
+
+	option = {
+	name = gerflag.4.a
+	hidden_effect = {
+	set_cosmetic_tag = GER_at_war2
+	}
+	custom_effect_tooltip = gerflag.4.ta
+	}
+
+	option = {
+	name = gerflag.4.b
+	custom_effect_tooltip = gerflag.4.tb
+	}
+}
+
+### End of the event for the war flag switch
+
+### Start of the event to prevent gerflag.3 and .4 occuring simultaneously
+
+country_event = {
+	id = gerflag.5
+	title = gerflag.5.t
+	desc = gerflag.5.d
+
+	fire_only_once = yes
+
+	trigger = {
+	tag = GER
+	has_government = fascism
+	date > 1937.12.31
+	NOT = {
+	has_country_flag = GER_war_flag
+	has_war = yes
+	}
+	}
+
+	immediate = {
+	set_country_flag = GER_war_flag_switch_no
+	}
+
+	mean_time_to_happen = {
+	days = 0 # let's try this
+	}
+
+	option = {
+	name = gerflag.5.a
+	custom_effect_tooltip = gerflag.5.ta
+	}
+}
+
+### End of the prevention
+
+### peacetime reset of flags if you chose to not hoist the war flag
+
+country_event = {
+	id = gerflag.6
+	title = gerflag.6.t
+	desc = gerflag.6.d
+
+	trigger = {
+	tag = GER
+	NOT = {
+	has_war = yes
+	has_country_flag = GER_war_flag
+	}
+	has_country_flag = GER_war_flag_occured
+	}
+
+	immediate = {
+	clr_country_flag = GER_war_flag_occured
+	set_country_flag = GER_civil_flag
+	}
+
+	mean_time_to_happen = {
+	days = 0 # let's try this
+	}
+
+	option = {
+	name = gerflag.6.a
+	}
+}
+
+### end of peacetime reset
+
+
+
+### Todo:
+### Rework loc
+### Give the fascist rebels (Oppose Hitler) the ability to use this
+### Give the communists a choice? The had quite a lot of flags (historical GDR) ### not feasible, vanilla has no real Commie path
+### decision to 'rectify' not hoisting a flag # first try didn't go too well
