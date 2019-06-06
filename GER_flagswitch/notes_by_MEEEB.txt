@@ -1,9 +1,8 @@
 If this is all one line, blame Windows.
 ### Notes for 'German Flagswitch'
 ### by MEEEB
-### v3 (third take)
-### a lot of rework happened
-### added/renamed some files
+### v3 (third take) rev1
+### typo
 
 
 Hello reader!
@@ -45,7 +44,7 @@ Files overwritten:
 
 Files added:
 
-/events/GER_flagswitchevents.txt
+/events/GER_flagswitch_events.txt
 /gfx/flags/GER_at_war1_fascism.tga
 /gfx/flags/medium/GER_at_war1_fascism.tga
 /gfx/flags/small/GER_at_war1_fascism.tga
