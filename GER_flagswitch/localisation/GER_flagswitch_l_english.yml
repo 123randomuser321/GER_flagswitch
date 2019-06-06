@@ -1,8 +1,8 @@
 ﻿### loc for 'German Flagswitch'
 ### by MEEEB
-### v2 rev2
-### Added optionals
-### Added tooltips
+### v3 (second take)
+### prior .6 loc merged into .2
+### .6 is now some flavor text
 
 
 l_english:
@@ -16,13 +16,14 @@ gerflag.1.ta:0 "Germany will change its flag to the National flag."
 gerflag.1.tb:0 "The War flag will continue to be your flag."
 ### end
 
-### loc for early War flag
+### loc for early War flag (Hitler) and general war (everyone else)
 gerflag.2.t:0 "Germany at war!"
 gerflag.2.d:0 "We are at war! May the world shudder, and shatter under our might!"
 gerflag.2.a:0 "Early, but necessary."
 gerflag.2.b:0 "This will not last long enough to bother us."
 gerflag.2.ta:0 "Germany will change its flag to the early War flag."
-gerflag.2.tb:0 "The National flag will continue to be your flag."
+gerflag.2.tb:0 "The Empire will change its flag to the War flag"
+gerflag.2.tc:0 "The National flag will continue to be your flag."
 ### end
 
 ### loc for the later War flag
@@ -50,11 +51,8 @@ gerflag.5.a:0 "It's beautiful!"
 gerflag.5.ta:0 "You'll be able to use the late War flag in the next war."
 ### end
 
-### loc for Willy's war
-gerflag.6.t:0 "The Empire at war!"
-gerflag.6.d:0 "We are at war! May the world shudder, and shatter under our might!"
-gerflag.6.a:0 "We are ready. Let's see if our enemies are!"
-gerflag.6.b:0 "The Empire does not care."
-gerflag.6.ta:0 "The Empire will change its flag to the War flag."
-gerflag.6.tb:0 "The Empire will keep using the tricolour."
+### loc for quick peace
+gerflag.6.t:0 "Peace returns"
+gerflag.6.d:0 "As expected, we have finished our business quickly and decisively."
+gerflag.6.a:0 "Back to our usual business."
 ### end
