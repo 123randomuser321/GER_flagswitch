@@ -1,9 +1,8 @@
 ﻿### loc for events from 'German Flagswitch'
 ### by MEEEB
-### v3 (second take)
-### prior .6 loc merged into .2
-### .6 is now some flavor text
-### renamed this file and redid its header
+### v3 (third take) rev 2
+### if doesn't work, sadly, so we are falling back on ROOT to get some flavor
+### GetNameDef has one problem: It doesn't capitalize the article
 
 
 l_english:
@@ -18,21 +17,20 @@ gerflag.1.tb:0 "The War flag will continue to be your flag."
 ### end
 
 ### loc for early War flag (Hitler) and general war (everyone else)
-gerflag.2.t:0 "Germany at war!"
+gerflag.2.t:0 "[ROOT.GetName] at war!"
 gerflag.2.d:0 "We are at war! May the world shudder, and shatter under our might!"
-gerflag.2.a:0 "Early, but necessary."
+gerflag.2.a:0 "We are ready. Let's see if our enemies are!"
 gerflag.2.b:0 "This will not last long enough to bother us."
-gerflag.2.ta:0 "Germany will change its flag to the early War flag."
-gerflag.2.tb:0 "The Empire will change its flag to the War flag"
-gerflag.2.tc:0 "The National flag will continue to be your flag."
+gerflag.2.ta:0 "[ROOT.GetNameDef] will change its flag to the War flag."
+gerflag.2.tb:0 "The National flag will continue to be your flag."
 ### end
 
 ### loc for the later War flag
-gerflag.3.t:0 "Germany at war!"
+gerflag.3.t:0 "[ROOT.GetName] at war!"
 gerflag.3.d:0 "We are at war! May the world shudder, and shatter under our might!"
 gerflag.3.a:0 "We are ready. Let's see if our enemies are!"
 gerflag.3.b:0 "The Blitz will shatter them!"
-gerflag.3.ta:0 "Germany will change its flag to the late War flag."
+gerflag.3.ta:0 "[ROOT.GetNameDef] will change its flag to the War flag."
 gerflag.3.tb:0 "The National flag will continue to be your flag."
 ### end
 

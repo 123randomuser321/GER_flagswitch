@@ -1,8 +1,8 @@
 ﻿### The events for 'German Flagswitch'
 ### By MEEEB
-### v3 (third take)
-### typo
-### renamed this file
+### v3 (third take) rev2
+### .2's trigger modified to be exclusive, not inclusive
+### purged if from .2
 
 
 ### Create a namespace for this
@@ -67,14 +67,9 @@ country_event = {
 
 	trigger = {
 	tag = GER
-	OR = {
-	AND = {
-	has_government = fascism # Uncle A
-	date < 1938.01.01
-	}
-	has_government = neutrality # Willy
-	}
 	NOT = {
+	AND = { has_government = fascism date > 1937.12.31 } # blocks Uncle A as soon as 1938 starts, refer to .3
+	has_government = communism # todo
 	has_country_flag = GER_war_flag_occured
 	}
 	has_war = yes
@@ -95,19 +90,12 @@ country_event = {
 	set_country_flag = GER_war_flag # so only this option will yield the peacetime switch later
 	set_cosmetic_tag = GER_at_war1 
 	}
-	if = {
-	limit = { has_government = fascism } # Uncle A loc
 	custom_effect_tooltip = gerflag.2.ta
-	}
-	if = {
-	limit = { has_government = neutrality } # Willy
-	custom_effect_tooltip = gerflag.2.tb
-	}
 	}
 
 	option = {
 	name = gerflag.2.b
-	custom_effect_tooltip = gerflag.2.tc
+	custom_effect_tooltip = gerflag.2.tb
 	}
 }
 

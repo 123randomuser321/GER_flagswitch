@@ -1,8 +1,9 @@
 If this is all one line, blame Windows.
 ### Notes for 'German Flagswitch'
 ### by MEEEB
-### v3 (third take) rev1
-### typo
+### v3 (third take) rev2
+### some re-arrengements
+### new files
 
 
 Hello reader!
@@ -17,6 +18,8 @@ Wartime flag (1935-1938): https://upload.wikimedia.org/wikipedia/commons/thumb/c
 Wartime flag (1938-1945): https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/War_ensign_of_Germany_%281938%E2%80%931945%29.svg/1000px-War_ensign_of_Germany_%281938%E2%80%931945%29.svg.png
 Imperial Tricolour: https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Flag_of_the_German_Empire.svg/1200px-Flag_of_the_German_Empire.svg.png
 Imperial War flag: https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/War_Ensign_of_Germany_%281903-1918%29.svg/1280px-War_Ensign_of_Germany_%281903-1918%29.svg.png
+Weimar War flag (used for democratic Germany):
+https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/War_Ensign_of_Germany_%281921-1933%29.svg/1000px-War_Ensign_of_Germany_%281921-1933%29.svg.png
 
 
 General notes:
@@ -24,8 +27,8 @@ General notes:
 This mod does several things:
 
 1. It decensores(?) the fascist civil flag.
-2. It adds cosmetic tags for the war flags of Germany (as of now Uncle A and Kaiser Willy).
-3. It uses two events to switch the fascist war flag at the appopriate date.
+2. It adds cosmetic tags for the war flags of Germany (as of now Uncle A, Kaiser Willy and El Goblino Konrad).
+3. It uses several events to switch the war flag at the appopriate date.
 4. It uses several events to switch your flag, depending on your diplomatic status (war or peace).
 
 
@@ -45,6 +48,9 @@ Files overwritten:
 Files added:
 
 /events/GER_flagswitch_events.txt
+/gfx/flags/GER_at_war1_democratic.tga
+/gfx/flags/medium/GER_at_war1_democratic.tga
+/gfx/flags/small/GER_at_war1_democratic.tga
 /gfx/flags/GER_at_war1_fascism.tga
 /gfx/flags/medium/GER_at_war1_fascism.tga
 /gfx/flags/small/GER_at_war1_fascism.tga
@@ -61,9 +67,7 @@ Files added:
 
 Dev notes:
 
-This was sadly not a simple measure of copy and paste, though it should work.
-
-This doesn't touch any files relevant to the game, so it's universally compatible
+This doesn't touch any files relevant to the game, so it's universally compatible, safe for someone overwriting any of the GER_[ideology].tga files.
 Which means: It's compatible with i.e. 'Beautiful States'.
 
 Bear in mind:
